@@ -70,13 +70,61 @@ public class MyCards {
 		
 	}
 	
+	
+	/**
+	 * display method to show a card.
+	 * 
+	 * @param thisCard
+	 */
+	public static void display(int thisCard[]){
+		String card = "";
+		if (thisCard[1] == 1) {
+			card += "A";
+		} else if (thisCard[1] == 11) {
+			card += "J";
+		} else if (thisCard[1] == 12) {
+			card += "Q";
+		} else if (thisCard[1] == 13) {
+			card += "K";
+		} else {
+			card += thisCard[1];
+		}
+		
+		//card += " of ";
+
+		if (thisCard[0] == 1) {
+			card += "C ";
+		} else if (thisCard[0] == 2) {
+			card += "H ";
+		} else if (thisCard[0] == 3) {
+			card += "S ";
+		} else if (thisCard[0] == 4) {
+			card += "D ";
+		}
+		
+		System.out.println(card);
+		
+	}
+	
+	
+	/**
+	 * drawing a card from the deck is performed using this method
+	 * 
+	 * 
+	 * @param i
+	 * @return
+	 */
+	public static int[] drawACard(int i){
+		return cardDeck[i];
+	}
+	
 	/**
 	 * Method to shuffle the cards.
 	 * 
 	 */
 	public void ShuffleArray()
 	{
-	    int index, temp[][] = new int[1][2];
+		int index, temp[][] = new int[1][2];
 	    Random random = new Random();
 	    for (int i = 51; i > 0; i--)
 	    {
@@ -90,6 +138,31 @@ public class MyCards {
 	        cardDeck[i][0] = temp[0][0];
 	        cardDeck[i][1] = temp[0][1];
 	    }
+	}
+	
+	
+	/**
+	 * After each deal the used cards are pushed back in the deck. This logic is implemented
+	 * here in this method.
+	 * 
+	 * @param thisDeck
+	 * @param cardPointer
+	 * @param usedCards
+	 * @return
+	 */
+	public static int[][] pushBackUsedCards(int[][] thisDeck, int cardPointer, int[][] usedCards){
+		int[][] newDeck = new int[52][2];
+		int i,j;
+		for(i = cardPointer,j=0;i<thisDeck.length;i++,j++){
+			newDeck[j][0] = thisDeck[i][0];
+			newDeck[j][1] = thisDeck[i][1];
+		}
+		
+		for(i=0;j<52;j++,i++ ){
+			newDeck[j][0] = usedCards[i][0];
+			newDeck[j][1] = usedCards[i][1];
+		}
+		return newDeck;
 	}
 	
 	/**
