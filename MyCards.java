@@ -5,6 +5,7 @@
  * 
  * Versions: 1.0 basic implementation of a card deck.
  * 			 1.1 shuffling process of the cards implemented.
+ * 			 1.2 drawing card and pushing used cards at back of the deck was implemented
  * 			Now working on draw card and game logic.
  */
 
